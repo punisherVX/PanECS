@@ -1,0 +1,4 @@
+Install the far-end hosts cert at: /etc/ssl/certs
+Run: update-ca-certificates
+
+curl 'https://demistoserver:443/incident' -H 'content-type: application/json' -H 'accept: application/json' -H 'Authorization: tCGnMIto1urDKyp2IwsHMurLwGsLpzoq' -d '{"name" : "Hello Incident","type" : "Unclassified","severity" : 0,"owner" : "admin","createInvestigation" : true}'

@@ -1,0 +1,480 @@
+PUT /_template/ecs_pan_template
+{
+  "index_patterns": ["pan*"],
+  "settings": {
+    "index.mapping.ignore_malformed": true,
+    "index.mapping.coerce": true
+  },
+  "aliases": {
+    "panos": {}
+  },
+  "mappings": {
+      "properties": {
+        "ecs": {
+          "properties": {
+            "version": {
+              "type": "keyword"
+            }
+          }
+        },
+        "labels" : {
+          "properties": {
+            "firewall": {
+              "type": "keyword"
+            },
+            "mgmt": {
+              "type": "keyword"
+            }
+          }
+        },
+        "@timestamp" : {
+          "type": "date"
+        },
+        "cloud": {
+          "properties": {
+            "provider": {
+              "type": "keyword"
+            }
+          }
+        },
+        "UUID_for_rule": {
+          "type": "keyword"
+        },
+        "device_group_hierarchy_level_1": {
+          "type": "integer"
+        },
+        "device_group_hierarchy_level_2": {
+          "type": "integer"
+        },
+        "device_group_hierarchy_level_3": {
+          "type": "integer"
+        },
+        "device_group_hierarchy_level_4": {
+          "type": "integer"
+        },
+        "destination": {
+          "properties": {
+            "bytes": {
+              "type": "long"
+            },
+            "geo": {
+              "properties": {
+                "country_name": {
+                  "type": "keyword",
+                  "ignore_above":256,
+                  "fields": {
+                    "text": {
+                      "type": "text"
+                    }
+                  }
+                }
+              }
+            },
+            "interface": {
+              "type": "long"
+            },
+            "ip": {
+              "type": "ip"
+            },
+            "nat": {
+              "properties": {
+                "ip": {
+                  "type": "ip"
+                },
+                "port": {
+                  "type": "long"
+                }
+              }
+            },
+            "packets": {
+              "type": "long"
+            },
+            "port": {
+              "type": "long"
+            },
+            "user": {
+              "properties": {
+                "name": {
+                  "type": "keyword",
+                  "ignore_above":256,
+                  "fields": {
+                    "text": {
+                      "type": "text"
+                    }
+                  }
+                }
+              }
+            },
+            "zone": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "event": {
+          "properties": {
+            "action": {
+              "type": "keyword",
+              "ignore_above": 256
+            },
+            "created": {
+              "type": "date",
+              "format": "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis"
+            },
+            "direction": {
+              "type": "keyword",
+              "ignore_above": 256
+            },
+            "duration": {
+              "type": "long"
+            },
+            "hash": {
+              "type": "keyword",
+              "ignore_above": 256
+            },
+            "repeat_count": {
+              "type": "long"
+            },
+            "sequence": {
+              "type": "long"
+            },
+            "severity": {
+              "type": "keyword"
+            }
+          }
+        },
+        "file": {
+          "properties": {
+            "file_type": {
+              "type": "keyword"
+            }
+          }
+        },
+        "http": {
+          "properties": {
+            "content_type": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "request": {
+              "properties": {
+                "method": {
+                  "type": "keyword"
+                },
+                "referrer": {
+                  "type": "keyword",
+                  "ignore_above":256,
+                  "fields": {
+                    "text": {
+                      "type": "text"
+                    }
+                  }
+                }
+              }
+            },
+            "response": {
+              "properties": {
+                "headers": {
+                  "type": "keyword",
+                  "ignore_above":1024,
+                  "fields": {
+                    "text": {
+                      "type": "text"
+                    }
+                  }
+                }
+              }
+            },
+            "X_forwarded_for": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            }
+          }
+        },
+        "network": {
+          "properties": {
+            "application": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "bytes": {
+              "type": "long"
+            },
+            "packets": {
+              "type": "long"
+            },
+            "protocol": {
+              "type": "keyword"
+            }
+          }
+        },
+        "observer": {
+          "properties": {
+            "hostname": {
+              "type": "keyword"
+            },
+            "serial_number": {
+              "type": "keyword"
+            },
+            "type": {
+              "type": "keyword"
+            },
+            "vendor": {
+              "type": "keyword"
+            },
+            "version": {
+              "type": "keyword",
+              "ignore_above": 8
+            }
+          }
+        },
+        "source": {
+          "properties": {
+            "bytes": {
+              "type": "long"
+            },
+            "geo": {
+              "properties": {
+                "country_name": {
+                  "type": "keyword",
+                  "ignore_above":256,
+                  "fields": {
+                    "text": {
+                      "type": "text"
+                    }
+                  }
+                }
+              }
+            },
+            "interface": {
+              "type": "long"
+            },
+            "ip": {
+              "type": "ip"
+            },
+            "nat": {
+              "properties": {
+                "ip": {
+                  "type": "ip"
+                },
+                "port": {
+                  "type": "long"
+                }
+              }
+            },
+            "packets": {
+              "type": "long"
+            },
+            "port": {
+              "type": "long"
+            },
+            "user": {
+              "properties": {
+                "name": {
+                  "type": "keyword",
+                  "ignore_above":256,
+                  "fields": {
+                    "text": {
+                      "type": "text"
+                    }
+                  }
+                }
+              }
+            },
+            "zone": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "url": {
+          "properties": {
+            "full": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "category": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "index": {
+              "type": "long"
+            }
+          }
+        },
+        "panos": {
+          "properties": {
+            "action_flags": {
+              "type": "byte"
+            },
+            "action_source": {
+              "type": "keyword"
+            },
+            "content_version": {
+              "type": "keyword"
+            },
+            "destination_VM_UUID": {
+              "type": "keyword"
+            },
+            "file_digest": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "flags": {
+              "type": "long"
+            },
+            "log_action": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "log_subtype": {
+              "type": "keyword"
+            },
+            "monitor_tag_IMEI": {
+              "type": "keyword"
+            },
+            "parent_session_ID": {
+              "type": "keyword"
+            },
+            "parent_start_time": {
+              "type": "date",
+              "format": "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis"
+            },
+            "pcap_id": {
+              "type": "long"
+            },
+            "payload_protocol_id": {
+              "type": "keyword"
+            },
+            "rcv_time_control_plane": {
+              "type": "date",
+              "format": "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis"
+            },
+            "recipient": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "report_ID": {
+              "type": "keyword"
+            },
+            "rule_name": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "sender": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "session_end_reason": {
+              "type": "keyword"
+            },
+            "session_id": {
+              "type": "long"
+            },
+            "session_start_time": {
+              "type": "date",
+              "format": "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd||epoch_millis"
+            },
+            "source_VM_UUID": {
+              "type": "keyword"
+            },
+            "subject": {
+              "type": "keyword",
+              "ignore_above":512,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "threat_id": {
+              "type": "keyword"
+            },
+            "threat_category": {
+              "type": "keyword"
+            },
+            "threat_type": {
+              "type": "keyword"
+            },
+            "tunnel_ID_IMSI": {
+              "type": "keyword"
+            },
+            "tunnel_type": {
+              "type": "keyword"
+            },
+            "user_agent": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            },
+            "virtual_system": {
+              "type": "keyword"
+            },
+            "virtual_system_name": {
+              "type": "keyword",
+              "ignore_above":256,
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              }
+            }
+          }
+        }
+      }
+  }
+}

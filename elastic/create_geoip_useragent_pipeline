@@ -1,0 +1,31 @@
+# Add Elasticsearch Ingest Node conditional pipeline for adding geoip and user_agent processing to incoming PANW data
+
+curl -XPUT localhost:9200/_ingest/pipeline/geoip_useragent_pipeline -H 'Content-Type: application/json' -d '
+{
+  "processors": [
+    {
+      "geoip": {
+        "if": "ctx.source.ip != null",
+        "field": "source.ip",
+        "target_field": "source.ip.geoip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "geoip": {
+        "if": "ctx.source.nat.ip != null",
+        "field": "source.nat.ip",
+        "target_field": "source.nat.ip.geoip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "user_agent" : {
+        "if": "ctx.user_agent.original != null",
+        "field" : "user_agent.original",
+        "ecs" : true,
+        "ignore_missing": true
+      }
+    }
+  ]
+}
