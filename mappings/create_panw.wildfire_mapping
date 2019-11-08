@@ -1,5 +1,0 @@
-# Ensure PANW.WILDFIRE index has the correct type mappings.
-
-
-curl -XPUT localhost:9200/_template/panw.wildfire_template -H 'Content-Type: application/json' -d '
-
