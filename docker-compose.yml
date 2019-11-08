@@ -2,18 +2,18 @@ version: '3'
 
 services:
 #Container for ELK downloaded from https://www.docker.elastic.co/# 
-  elasticsearch:
   #app name
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.1
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
     container_name: elasticsearch
     environment:
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+      - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
     volumes:
-      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./install/elastic/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - ./esdata:/usr/share/elasticsearch/data
-      - ./mappings:/usr/share/elasticsearch/mappings
+      - ./install/elastic/mappings:/usr/share/elasticsearch/mappings
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -24,7 +24,7 @@ services:
 #    command: bash /usr/share/elasticsearch/mappings/create_ecs_pan_mapping
   logstash:
   #app name
-    image: docker.elastic.co/logstash/logstash:6.7.1
+    image: docker.elastic.co/logstash/logstash:7.4.2
     container_name: logstash
     volumes:
       - ./install/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
@@ -56,7 +56,7 @@ services:
 
   kibana:
   #app name
-    image: docker.elastic.co/kibana/kibana:6.7.1
+    image: docker.elastic.co/kibana/kibana:7.4.2
     container_name: kibana
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml:ro
