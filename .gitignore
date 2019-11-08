@@ -107,4 +107,5 @@ venv.bak/
 esdata/*
 !esdata/readme
 *.log
+!/lib
 
