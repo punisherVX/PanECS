@@ -7,7 +7,6 @@ services:
     container_name: pan-elk-elasticsearch
     restart: always
     environment:
-      - discovery.type=single-node
       - node.name=pan-elk-es01
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
@@ -22,41 +21,37 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
-    networks:
-      - pan-elk-net
 
-  logstash:
-    image: docker.elastic.co/logstash/logstash:7.4.2
-    container_name: pan-elk-logstash
-    restart: always
-    volumes:
-      - ./install/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-      - ./install/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
-      - ./install/logstash/logstash.log:/usr/share/logstash/logstash.log
-    ports:
-      - "5509:5509/udp"     # traps
-      - "5510:5510/udp"     # traffic
-      - "5511:5511/udp"     # url
-      - "5512:5512/udp"     # wildfire
-      - "5513:5513/udp"     # datafiltering
-      - "5514:5514/udp"     # threat
-      - "5515:5515/udp"     # userid
-      - "5516:5516/udp"     # tunnel
-      - "5517:5517/udp"     # HIPlog
-      - "5518:5518/udp"     # system
-      - "5519:5519/udp"     # config
-      - "5520:5520/udp"     # gtp
-      - "9600:9600"         # nfi
-    environment:
-      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
-    ulimits:
-     nofile:
-      soft: "65536"
-      hard: "65536"
-    networks:
-      - pan-elk-net
-    depends_on:
-      - elasticsearch
+  # logstash:
+  #   image: docker.elastic.co/logstash/logstash:7.4.2
+  #   container_name: pan-elk-logstash
+  #   restart: always
+  #   volumes:
+  #     - ./install/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+  #     - ./install/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+  #     - ./install/logstash/logstash.log:/usr/share/logstash/logstash.log
+  #   ports:
+  #     - "5509:5509/udp"     # traps
+  #     - "5510:5510/udp"     # traffic
+  #     - "5511:5511/udp"     # url
+  #     - "5512:5512/udp"     # wildfire
+  #     - "5513:5513/udp"     # datafiltering
+  #     - "5514:5514/udp"     # threat
+  #     - "5515:5515/udp"     # userid
+  #     - "5516:5516/udp"     # tunnel
+  #     - "5517:5517/udp"     # HIPlog
+  #     - "5518:5518/udp"     # system
+  #     - "5519:5519/udp"     # config
+  #     - "5520:5520/udp"     # gtp
+  #     - "9600:9600"         # nfi
+  #   environment:
+  #     LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+  #   ulimits:
+  #    nofile:
+  #     soft: "65536"
+  #     hard: "65536"
+  #   depends_on:
+  #     - elasticsearch
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.4.2
@@ -66,17 +61,8 @@ services:
       ELASTICSEARCH_URL: http://elasticsearch:9200
       ELASTICSEARCH_HOSTS: http://elasticsearch:9200
     volumes:
-      - ./install/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
+      - ./install/kibana/kibana.yml:/etc/kibana/kibana.yml:ro
     ports:
       - "5601:5601"
-    networks:
-      - pan-elk-net
     depends_on:
       - elasticsearch
-
-networks:
-  pan-elk-net:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.172.0.0/16

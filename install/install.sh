@@ -43,22 +43,12 @@ else
 fi
 
 printf "\n\n--- INSTALLING TEMPLATE MAPPINGS ---\n"
-printf "\n$(tput setaf 6)Installing af-details mapping$(tput sgr 0)\n"
+printf "\n$(tput setaf 6)Installing panw.threat mappings$(tput sgr 0)\n"
 curl -XPUT -H'Content-Type: application/json' \
-    'http://localhost:9200/af-details/' \
-    -d @./elasticsearch/mappings/af-details.json
+    http://$ELASTICSEARCH_HOST:$PORT/_template/threat?pretty \
+    -d @./elasticsearch/mappings/panw.threat_template.json
 
-printf "\n\n$(tput setaf 6)Installing threat mapping$(tput sgr 0)\n"
+printf "\n$(tput setaf 6)Installing panw.traffic mappings$(tput sgr 0)\n"
 curl -XPUT -H'Content-Type: application/json' \
-    'http://localhost:9200/_template/threat?pretty' \
-    -d @./elasticsearch/mappings/threat_template_mapping.json
-
-printf "\n$(tput setaf 6)Installing domain detail mapping$(tput sgr 0)\n"
-curl -XPUT -H'Content-Type: application/json' \
-    'http://localhost:9200/sfn-domain-details/' \
-    -d @./elasticsearch/mappings/sfn-domain-details.json
-
-printf "\n\n$(tput setaf 6)Installing tag mapping$(tput sgr 0)\n"
-curl -XPUT -H'Content-Type: application/json' \
-    'http://localhost:9200/sfn-tag-details/' \
-    -d @./elasticsearch/mappings/sfn-tag-details.json
+    http://$ELASTICSEARCH_HOST:$PORT/_template/traffic?pretty \
+    -d @./elasticsearch/mappings/panw.traffic_template.json

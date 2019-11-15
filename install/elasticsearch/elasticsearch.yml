@@ -14,9 +14,9 @@ discovery.zen.minimum_master_nodes: 1
 #
 discovery.type: single-node
 
-xpack.monitoring.collection.enabled: true
+#xpack.monitoring.collection.enabled: true
 
 #xpack.security.enabled: true
-xpack.ssl.verification_mode: none
+#xpack.ssl.verification_mode: none
 #xpack.security.http.ssl.enabled: true
 #xpack.http.ssl.truststore.path: /etc/ssl/certs
