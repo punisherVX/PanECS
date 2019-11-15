@@ -5,7 +5,7 @@ http.host: "0.0.0.0"
 path.config: /usr/share/logstash/pipeline
 config.reload.automatic: true
 config.reload.interval: 3
-path.logs: /usr/share/logstash
+path.logs: /var/log/logstash
 log.level: error
 log.format: plain
 # xpack.monitoring.enabled: true
