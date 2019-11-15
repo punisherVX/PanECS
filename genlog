@@ -27,16 +27,16 @@ ALL=""
 
 case "$1" in
 
-traffic)  LOGCONTENT="`cat samples/sample_traffic_log`" PORT="5550";;
-threat)  LOGCONTENT="`cat samples/sample_threat_log`" PORT="5551";;
-url)  LOGCONTENT="`cat samples/sample_url_log`" PORT="5552";;
-wf)  LOGCONTENT="`cat samples/sample_wf_log`" PORT="5553";;
-dataf)  LOGCONTENT="`cat samples/sample_dataf_log`" PORT="5554";;
-userid)  LOGCONTENT="`cat samples/sample_userid_log`" PORT="5555";;
-tunnel)  LOGCONTENT="`cat samples/sample_tunnel_log`" PORT="5556";;
-hip)  LOGCONTENT="`cat samples/sample_HIP_log`" PORT="5557";;
-system)  LOGCONTENT="`cat samples/sample_panos_system_log`" PORT="5558";;
-config)  LOGCONTENT="`cat samples/sample_panos_config_log`" PORT="5559";;
+traffic)  LOGCONTENT="`cat lib/samples/sample_traffic_log_8.1_9.0`" PORT="5550";;
+threat)  LOGCONTENT="`cat lib/samples/sample_threat_log2`" PORT="5551";;
+url)  LOGCONTENT="`cat lib/samples/sample_url_log`" PORT="5552";;
+wf)  LOGCONTENT="`cat lib/samples/sample_wf_log`" PORT="5553";;
+dataf)  LOGCONTENT="`cat lib/samples/sample_dataf_log`" PORT="5554";;
+userid)  LOGCONTENT="`cat lib/samples/sample_userid_log`" PORT="5555";;
+tunnel)  LOGCONTENT="`cat lib/samples/sample_tunnel_log`" PORT="5556";;
+hip)  LOGCONTENT="`cat lib/samples/sample_HIP_log`" PORT="5557";;
+system)  LOGCONTENT="`cat lib/samples/sample_panos_system_log`" PORT="5558";;
+config)  LOGCONTENT="`cat lib/samples/sample_panos_config_log`" PORT="5559";;
 all)  ALL="1";LOGCONTENT="1";;
 
 esac
@@ -69,16 +69,16 @@ do
 
 if [ -n "$ALL" ]; then
 case $((CTR % 10)) in
-        0) LOGCONTENT="`cat samples/sample_traffic_log`" PORT="5550";;
-        1) LOGCONTENT="`cat samples/sample_threat_log`" PORT="5551";;
-        2) LOGCONTENT="`cat samples/sample_url_log`" PORT="5552";;
-	3) LOGCONTENT="`cat samples/sample_wf_log`" PORT="5553";;
-	4) LOGCONTENT="`cat samples/sample_dataf_log`" PORT="5554";;
-	5) LOGCONTENT="`cat samples/sample_userid_log`" PORT="5555";;
-	6) LOGCONTENT="`cat samples/sample_tunnel_log`" PORT="5556";;
-	7) LOGCONTENT="`cat samples/sample_HIP_log`" PORT="5557";;
-	8) LOGCONTENT="`cat samples/sample_panos_system_log`" PORT="5558";;
-	9) LOGCONTENT="`cat samples/sample_panos_config_log`" PORT="5559";;
+        0) LOGCONTENT="`cat lib/samples/sample_traffic_log`" PORT="5550";;
+        1) LOGCONTENT="`cat lib/samples/sample_threat_log`" PORT="5551";;
+        2) LOGCONTENT="`cat lib/samples/sample_url_log`" PORT="5552";;
+	3) LOGCONTENT="`cat lib/samples/sample_wf_log`" PORT="5553";;
+	4) LOGCONTENT="`cat lib/samples/sample_dataf_log`" PORT="5554";;
+	5) LOGCONTENT="`cat lib/samples/sample_userid_log`" PORT="5555";;
+	6) LOGCONTENT="`cat lib/samples/sample_tunnel_log`" PORT="5556";;
+	7) LOGCONTENT="`cat lib/samples/sample_HIP_log`" PORT="5557";;
+	8) LOGCONTENT="`cat lib/samples/sample_panos_system_log`" PORT="5558";;
+	9) LOGCONTENT="`cat lib/samples/sample_panos_config_log`" PORT="5559";;
 esac
 fi
 
