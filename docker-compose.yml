@@ -15,8 +15,8 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - ./install/elastic/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-      - ./install/elastic/mappings:/usr/share/elasticsearch/mappings
+      - ./install/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./install/elasticsearch/mappings:/usr/share/elasticsearch/mappings
       - ./esdata:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
@@ -29,7 +29,7 @@ services:
   #   volumes:
   #     - ./install/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
   #     - ./install/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
-  #     - ./install/logstash/logstash.log:/usr/share/logstash/logstash.log
+  #     - ./install/logstash/logstash.log:/var/log/logstash/logstash.log
   #   ports:
   #     - "5509:5509/udp"     # traps
   #     - "5510:5510/udp"     # traffic
