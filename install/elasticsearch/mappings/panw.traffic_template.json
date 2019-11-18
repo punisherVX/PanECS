@@ -1,6 +1,6 @@
 {
-    "index_patterns": ["panw.traffic*"],
-    "template" : "panw.traffic*",
+    "index_patterns": ["panw-traffic*"],
+    "template" : "panw-traffic*",
     "version" : 1,
     "settings" : {
         "number_of_shards": "1",
