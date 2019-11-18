@@ -43,12 +43,19 @@ else
 fi
 
 printf "\n\n--- INSTALLING TEMPLATE MAPPINGS ---\n"
-printf "\n$(tput setaf 6)Installing panw.threat mappings$(tput sgr 0)\n"
-curl -XPUT -H'Content-Type: application/json' \
-    http://$ELASTICSEARCH_HOST:$PORT/_template/threat?pretty \
-    -d @./elasticsearch/mappings/panw.threat_template.json
+FILES=./elasticsearch/mappings/*_template.json
 
-printf "\n$(tput setaf 6)Installing panw.traffic mappings$(tput sgr 0)\n"
-curl -XPUT -H'Content-Type: application/json' \
-    http://$ELASTICSEARCH_HOST:$PORT/_template/traffic?pretty \
-    -d @./elasticsearch/mappings/panw.traffic_template.json
+for f in $FILES
+do
+  NAME=`echo $f |awk -F'[/_]' '{print $4}'`
+  printf "\n$(tput setaf 6)Installing $NAME mappings$(tput sgr 0)\n"
+done
+# printf "\n$(tput setaf 6)Installing panw.threat mappings$(tput sgr 0)\n"
+# curl -XPUT -H'Content-Type: application/json' \
+#     http://$ELASTICSEARCH_HOST:$PORT/_template/threat?pretty \
+#     -d @./elasticsearch/mappings/panw.threat_template.json
+
+# printf "\n$(tput setaf 6)Installing panw.traffic mappings$(tput sgr 0)\n"
+# curl -XPUT -H'Content-Type: application/json' \
+#     http://$ELASTICSEARCH_HOST:$PORT/_template/traffic?pretty \
+#     -d @./elasticsearch/mappings/panw.traffic_template.json
