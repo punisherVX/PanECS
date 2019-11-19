@@ -31,18 +31,18 @@ services:
       - ./install/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
       - ./install/logstash/logstash.log:/var/log/logstash/logstash.log
     ports:
-      - "5509:5509/udp"     # traps
-      - "5510:5510/udp"     # traffic
-      - "5511:5511/udp"     # url
-      - "5512:5512/udp"     # wildfire
-      - "5513:5513/udp"     # datafiltering
-      - "5514:5514/udp"     # threat
-      - "5515:5515/udp"     # userid
-      - "5516:5516/udp"     # tunnel
-      - "5517:5517/udp"     # HIPlog
-      - "5518:5518/udp"     # system
-      - "5519:5519/udp"     # config
-      - "5520:5520/udp"     # gtp
+      - "5549:5549/udp"     # traps
+      - "5550:5550/udp"     # traffic
+      - "5551:5551/udp"     # url
+      - "5552:5552/udp"     # wildfire
+      - "5553:5553/udp"     # datafiltering
+      - "5554:5554/udp"     # threat
+      - "5555:5555/udp"     # userid
+      - "5556:5556/udp"     # tunnel
+      - "5557:5557/udp"     # HIPlog
+      - "5558:5558/udp"     # system
+      - "5559:5559/udp"     # config
+      - "5560:5560/udp"     # gtp
       - "9600:9600"         # nfi
     environment:
       LS_JAVA_OPTS: "-Xmx1024m -Xms1024m"
