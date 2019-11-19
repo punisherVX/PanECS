@@ -49,6 +49,9 @@ for f in $FILES
 do
   NAME=`echo $f |awk -F'[/_]' '{print $4}'`
   printf "\n$(tput setaf 6)Installing $NAME mappings$(tput sgr 0)\n"
+  curl -XPUT -H'Content-Type: application/json' \
+    http://$ELASTICSEARCH_HOST:$PORT/_template/$NAME?pretty \
+    -d @./$f
 done
 # printf "\n$(tput setaf 6)Installing panw.threat mappings$(tput sgr 0)\n"
 # curl -XPUT -H'Content-Type: application/json' \

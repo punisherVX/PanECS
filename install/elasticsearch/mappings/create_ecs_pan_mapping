@@ -1,5 +1,5 @@
 #!/bin/bash
-FILES=./create_pan*_mapping
+FILES=./*_mapping.json
 
 for f in $FILES
 do

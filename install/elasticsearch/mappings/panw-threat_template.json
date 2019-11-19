@@ -28,7 +28,7 @@
                 "fields" : {
                   "keyword" : {
                     "type" : "keyword",
-                    "ignore_above" : 256
+                    "ignore_above" : 128
                   }
                 }
               },
@@ -39,7 +39,7 @@
                     "fields" : {
                       "keyword" : {
                         "type" : "keyword",
-                        "ignore_above" : 256
+                        "ignore_above" : 128
                       }
                     }
                   },
@@ -85,7 +85,7 @@
                 "fields" : {
                   "keyword" : {
                     "type" : "keyword",
-                    "ignore_above" : 256
+                    "ignore_above" : 128
                   }
                 }
               },
@@ -96,7 +96,7 @@
                     "fields" : {
                       "keyword" : {
                         "type" : "keyword",
-                        "ignore_above" : 256
+                        "ignore_above" : 128
                       }
                     }
                   },
@@ -644,7 +644,7 @@
                 "fields" : {
                   "keyword" : {
                     "type" : "keyword",
-                    "ignore_above" : 256
+                    "ignore_above" : 128
                   }
                 }
               },
@@ -655,7 +655,7 @@
                     "fields" : {
                       "keyword" : {
                         "type" : "keyword",
-                        "ignore_above" : 256
+                        "ignore_above" : 128
                       }
                     }
                   },
@@ -701,7 +701,7 @@
                 "fields" : {
                   "keyword" : {
                     "type" : "keyword",
-                    "ignore_above" : 256
+                    "ignore_above" : 128
                   }
                 }
               },
@@ -712,7 +712,7 @@
                     "fields" : {
                       "keyword" : {
                         "type" : "keyword",
-                        "ignore_above" : 256
+                        "ignore_above" : 128
                       }
                     }
                   },
@@ -810,21 +810,6 @@
             }
           }
         }
-      },
-      "settings" : {
-        "index" : {
-          "refresh_interval" : "5s",
-          "number_of_shards" : "1",
-          "provided_name" : "panw-threat-2019.11.16",
-          "creation_date" : "1574114684889",
-          "number_of_replicas" : "0",
-          "uuid" : "nWTOK3fFRj2f3gvsuwcc6g",
-          "version" : {
-            "created" : "7040299"
-          }
-        }
-      }
     }
-  }
-  
+   
 }

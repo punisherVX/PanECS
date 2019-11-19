@@ -21,15 +21,6 @@
                 }
               }
             },
-            "PANOSVER" : {
-              "type" : "text",
-              "fields" : {
-                "keyword" : {
-                  "type" : "keyword",
-                  "ignore_above" : 256
-                }
-              }
-            },
             "destination" : {
               "properties" : {
                 "bytes" : {
@@ -49,15 +40,33 @@
                   }
                 },
                 "ip" : {
-                  "type" : "ip"
+                  "type" : "ip",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword",
+                      "ignore_above" : 128
+                    }
+                  }
                 },
                 "nat" : {
                   "properties" : {
                     "ip" : {
-                      "type" : "ip"
+                      "type" : "ip",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword",
+                          "ignore_above" : 128
+                        }
+                      }
                     },
                     "port" : {
-                      "type" : "long"
+                      "type" : "long",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword",
+                          "ignore_above" : 128
+                        }
+                      }
                     }
                   }
                 },
@@ -65,7 +74,13 @@
                   "type" : "long"
                 },
                 "port" : {
-                  "type" : "long"
+                  "type" : "long",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword",
+                      "ignore_above" : 128
+                    }
+                  }
                 },
                 "user" : {
                   "properties" : {
@@ -372,15 +387,33 @@
                   }
                 },
                 "ip" : {
-                  "type" : "ip"
+                  "type" : "ip",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword",
+                      "ignore_above" : 128
+                    }
+                  }
                 },
                 "nat" : {
                   "properties" : {
                     "ip" : {
-                      "type" : "ip"
+                      "type" : "ip",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword",
+                          "ignore_above" : 128
+                        }
+                      }
                     },
                     "port" : {
-                      "type" : "long"
+                      "type" : "long",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword",
+                          "ignore_above" : 128
+                        }
+                      }
                     }
                   }
                 },
@@ -388,7 +421,13 @@
                   "type" : "long"
                 },
                 "port" : {
-                  "type" : "long"
+                  "type" : "long",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword",
+                      "ignore_above" : 128
+                    }
+                  }
                 },
                 "user" : {
                   "properties" : {
