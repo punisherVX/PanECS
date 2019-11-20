@@ -63,13 +63,3 @@ if [ "$DIRECTORY" != "docker" ]; then
     printf "\n$(tput setaf 6)Copying config file to /etc/logstash/$DIRECTORY$(tput sgr 0)\n"
     sudo cp logstash/palo-alto-networks.conf /etc/logstash/$DIRECTORY/
 fi
-
-# printf "\n$(tput setaf 6)Installing panw.threat mappings$(tput sgr 0)\n"
-# curl -XPUT -H'Content-Type: application/json' \
-#     http://$ELASTICSEARCH_HOST:$PORT/_template/threat?pretty \
-#     -d @./elasticsearch/mappings/panw.threat_template.json
-
-# printf "\n$(tput setaf 6)Installing panw.traffic mappings$(tput sgr 0)\n"
-# curl -XPUT -H'Content-Type: application/json' \
-#     http://$ELASTICSEARCH_HOST:$PORT/_template/traffic?pretty \
-#     -d @./elasticsearch/mappings/panw.traffic_template.json
