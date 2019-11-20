@@ -1,9 +1,5 @@
 # **PanECS**  
 
-
-
---------------
-#### <i class="icon-folder"></i> Getting Started with PanECS
 PanECS (_pronounced "panex"_) is an [Elastic Common Schema](https://www.elastic.co/blog/introducing-the-elastic-common-schema) implementation for gathering all logging information from the Palo Alto Networks Next Generation Firewall and the Traps application. By adhering to the standards of the ECS, these logs can be used in an ECS based Elasticsearch implementation and utilized to perform searches against, and create visualizations for, common data from differing vendors/hosts/apps/device-types all within the same context.    
 
 This repository includes:
