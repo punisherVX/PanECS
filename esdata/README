@@ -1,0 +1,5 @@
+This directory is part of the structure of the compose stack since it is referenced as a volume within docker-compose.
+
+Elasticsearch uses this directory to store all persistent data so that when containers are destroyed the data remains on disk.
+
+git ignores any contents in this directory for synching with github but it does keep this file
