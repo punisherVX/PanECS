@@ -28,7 +28,7 @@ services:
     restart: always
     volumes:
       - ./install/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-      - ./install/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+      - ./install/logstash/palo-alto-networks.conf:/usr/share/logstash/pipeline/palo-alto-networks.conf:ro
       - ./install/logstash/logstash.log:/var/log/logstash/logstash.log
     ports:
       - "5549:5549/udp"     # traps
