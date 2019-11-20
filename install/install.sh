@@ -2,6 +2,7 @@
 
 ELASTICSEARCH_HOST="127.0.0.1"
 PORT="9200"
+DIRECTORY="docker"
 PARAMS=""
 
 while (( "$#" )); do
@@ -12,6 +13,10 @@ while (( "$#" )); do
       ;;
     -p|--port)
       PORT=$2
+      shift 2
+      ;;
+    -l|--logstash)
+      DIRECTORY=$2
       shift 2
       ;;
     --) # end argument parsing
@@ -53,6 +58,12 @@ do
     http://$ELASTICSEARCH_HOST:$PORT/_template/$NAME?pretty \
     -d @./$f
 done
+
+if [ "$DIRECTORY" != "docker" ]; then
+    printf "\n$(tput setaf 6)Copying config file to /etc/logstash/$DIRECTORY$(tput sgr 0)\n"
+    sudo cp logstash/palo-alto-networks.conf /etc/logstash/$DIRECTORY/
+fi
+
 # printf "\n$(tput setaf 6)Installing panw.threat mappings$(tput sgr 0)\n"
 # curl -XPUT -H'Content-Type: application/json' \
 #     http://$ELASTICSEARCH_HOST:$PORT/_template/threat?pretty \
