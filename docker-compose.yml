@@ -9,7 +9,7 @@ services:
     environment:
       - node.name=pan-elk-es01
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
     ulimits:
       memlock:
         soft: -1
@@ -45,7 +45,7 @@ services:
       - "5560:5560/udp"     # gtp
       - "9600:9600"         # nfi
     environment:
-      LS_JAVA_OPTS: "-Xmx1024m -Xms1024m"
+      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
     ulimits:
      nofile:
       soft: "65536"
