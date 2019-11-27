@@ -11,5 +11,4 @@ This repository includes:
 
 For more information on each of the above, details of each and installation notes see the [Wiki](https://github.com/PaloAltoNetworks/PanECS/wiki) or follow the links below if they align with what you are looking for:
 
-* Installation using docker-compose
 
